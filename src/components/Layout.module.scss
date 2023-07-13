@@ -1,0 +1,4 @@
+@import "../styles/_mixins";
+.layout {
+	@include container;
+}
