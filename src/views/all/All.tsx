@@ -1,3 +1,4 @@
+import styles from "./All.module.scss";
 import { useEffect, useState } from "react";
 import { Layout } from "../../components/Layout";
 import { Link } from "react-router-dom";
@@ -7,16 +8,19 @@ export function AllView() {
 	// 2 hooki: useState i useEffect są potrzebne do osiągnięcia pożadanego efektu, więc stworzenie abstrakcji jest według mnie dobrym pomysłem
 	return (
 		<Layout>
-			{breeds.map((breed) => (
-				<>
-					<Link
-						key={breed.main + "-" + breed.sub}
-						to={`/breed/${breed.main}/${breed.sub}`}
+			<div>
+				{breeds.map((breed) => (
+					<div
+						className={styles.breed}
+						key={`${breed.main}-${breed.sub}`}
 					>
-						{`${breed.sub}`}
-					</Link>
-				</>
-			))}
+						<Link to={`/breed/${breed.main}/${breed.sub}`}>
+							{breed.sub} {breed.main}
+						</Link>
+						<button onClick={() => alert("TODO")}>❤️</button>
+					</div>
+				))}
+			</div>
 		</Layout>
 	);
 }
