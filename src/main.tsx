@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { HomeView } from "./views/home/HomeView";
 import { SearchView } from "./views/search/SearchView";
 import { AllView } from "./views/all/All";
+import { BreedView } from "./views/breed/BreedView";
 
 const router = createBrowserRouter([
 	{
@@ -17,6 +18,14 @@ const router = createBrowserRouter([
 	{
 		path: "/all",
 		element: <AllView />,
+	},
+	{
+		path: "/breed/:main/:sub",
+		element: <BreedView />,
+	},
+	{
+		path: "/breed/:main",
+		element: <BreedView />,
 	},
 ]);
 ReactDOM.createRoot(document.getElementById("root")!).render(
