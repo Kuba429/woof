@@ -1,5 +1,9 @@
 import { atom } from "jotai";
 
+const LOCAL_STORAGE_LIKED_KEY = "liked-breeds";
+
+export type breedType = Awaited<ReturnType<typeof fetchAllBreeds>>[number];
+
 async function fetchAllBreeds() {
 	// const res = await fetch("https://dog.ceo/api/breeds/list/all");
 	const liked = getLikedBreeds();
@@ -20,7 +24,7 @@ async function fetchAllBreeds() {
 	return breeds;
 }
 function getLikedBreeds(): [string, string][] {
-	const likedJson = localStorage.getItem("liked-breeds");
+	const likedJson = localStorage.getItem(LOCAL_STORAGE_LIKED_KEY);
 	if (!likedJson) return [];
 	return JSON.parse(likedJson);
 }
@@ -38,5 +42,29 @@ export const setImageAtom = atom(
 		}
 		itemToUpdate.image = update.newImage;
 		set(allBreedsAtom, copy);
+	}
+);
+export const toggleLikedAtom = atom(
+	null,
+	(get, set, update: { main: string; sub: string }) => {
+		const copy = [...get(allBreedsAtom)];
+		const itemToUpdate = copy.find(
+			({ main, sub }) => main === update.main && sub === update.sub
+		);
+		if (!itemToUpdate) return;
+		itemToUpdate.isLiked = !itemToUpdate.isLiked;
+		set(allBreedsAtom, copy);
+		// aktualizowanie polubionych ras od zera za każdym polubieniem nie jest najbardziej optymalne, jednak w tym przypadku myślę, że nie będzie się to wiązało ze spadkiem wydajności; dodatkowo, jest mniejsze ryzyko powstania bugów
+		const likedBreeds = [] as [string, string][]; // tupla aby zajmowała mniej znaków w formacie JSON niż obiekt
+		for (const breed of copy) {
+			if (breed.isLiked) {
+				likedBreeds.push([breed.main, breed.sub]);
+			}
+		}
+
+		localStorage.setItem(
+			LOCAL_STORAGE_LIKED_KEY,
+			JSON.stringify(likedBreeds)
+		);
 	}
 );

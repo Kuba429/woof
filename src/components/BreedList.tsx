@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
-import { breedType } from "../views/all/All";
 import styles from "./BreedList.module.scss";
 import { useState } from "react";
+import { useAtom } from "jotai";
+import { breedType, toggleLikedAtom } from "../stores/breeds";
 export function BreedList({
 	items,
 	header,
@@ -20,15 +21,14 @@ export function BreedList({
 }
 
 function ListItem({ breed }: { breed: breedType }) {
-	const [liked, setLiked] = useState(false);
-	const toggleLiked = () => setLiked((s) => !s);
+	const [, toggleLiked] = useAtom(toggleLikedAtom);
 	return (
 		<div className={styles.breed}>
 			<Link to={`/breed/${breed.main}/${breed.sub}`}>
 				{breed.sub} {breed.main}
 			</Link>
-			<div className={styles.like} onClick={toggleLiked}>
-				<LikeIcon active={liked} />
+			<div className={styles.like} onClick={() => toggleLiked(breed)}>
+				<LikeIcon active={breed.isLiked} />
 			</div>
 		</div>
 	);

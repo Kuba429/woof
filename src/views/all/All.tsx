@@ -11,5 +11,3 @@ export function AllView() {
 		</Layout>
 	);
 }
-
-export type breedType = { main: string; sub: string };
