@@ -5,10 +5,12 @@ html {
 }
 body {
 	--bg: #1f1d2c;
+	--bg-dimmed: #3e3958;
 	--primary: #f9b73a;
 	--text-primary: #fefefe;
 	--text-secondary: #82818a;
 
 	background-color: var(--bg);
 	color: var(--text-primary);
+	font-family: "Lato", sans-serif;
 }

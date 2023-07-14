@@ -8,19 +8,18 @@ export function AllView() {
 	// 2 hooki: useState i useEffect są potrzebne do osiągnięcia pożadanego efektu, więc stworzenie abstrakcji jest według mnie dobrym pomysłem
 	return (
 		<Layout>
-			<div>
-				{breeds.map((breed) => (
-					<div
-						className={styles.breed}
-						key={`${breed.main}-${breed.sub}`}
-					>
-						<Link to={`/breed/${breed.main}/${breed.sub}`}>
-							{breed.sub} {breed.main}
-						</Link>
-						<button onClick={() => alert("TODO")}>❤️</button>
-					</div>
-				))}
-			</div>
+			<h2 className={styles.header}>Lista ras</h2>
+			{breeds.map((breed) => (
+				<div
+					className={styles.breed}
+					key={`${breed.main}-${breed.sub}`}
+				>
+					<Link to={`/breed/${breed.main}/${breed.sub}`}>
+						{breed.sub} {breed.main}
+					</Link>
+					<button onClick={() => alert("TODO")}>❤️</button>
+				</div>
+			))}
 		</Layout>
 	);
 }
