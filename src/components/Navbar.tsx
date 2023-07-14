@@ -8,7 +8,7 @@ export function Navbar() {
 				// Tu będą ikonki zamiast tekstu
 			}
 			<Link to="/all">All</Link>
-			<Link to="/favorites">Favorites</Link>
+			<Link to="/liked">Liked</Link>
 			<Link to="/home">Home</Link>
 			<Link to="/random">Random</Link>
 			<Link to="/search">Search</Link>

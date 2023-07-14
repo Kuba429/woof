@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import styles from "./BreedList.module.scss";
-import { useState } from "react";
 import { useAtom } from "jotai";
 import { breedType, toggleLikedAtom } from "../stores/breeds";
 export function BreedList({
