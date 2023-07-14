@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import "./styles/global.scss";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { HomeView } from "./views/home/HomeView";
 import { SearchView } from "./views/search/SearchView";

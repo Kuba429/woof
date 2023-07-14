@@ -1,0 +1,14 @@
+body,
+html {
+	padding: 0;
+	margin: 0;
+}
+body {
+	--bg: #1f1d2c;
+	--primary: #f9b73a;
+	--text-primary: #fefefe;
+	--text-secondary: #82818a;
+
+	background-color: var(--bg);
+	color: var(--text-primary);
+}
