@@ -8,5 +8,18 @@
 	color: var(--bg);
 	display: flex;
 	justify-content: center;
+	align-items: center;
 	gap: 3rem;
+}
+.link {
+	color: white;
+	text-decoration: none;
+	height: 2rem;
+	aspect-ratio: 1 / 1;
+	fill: var(--text-secondary);
+	color: var(--text-secondary);
+}
+.active {
+	fill: var(--text-primary) !important;
+	color: var(--text-primary) !important;
 }
