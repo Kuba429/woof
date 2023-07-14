@@ -1,5 +1,3 @@
-import { Layout } from "../../components/Layout";
-
 export function HomeView() {
-	return <Layout>home</Layout>;
+	return <p>home</p>;
 }
