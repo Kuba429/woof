@@ -1,0 +1,24 @@
+.header {
+	padding-inline: 0.85rem;
+}
+.breed {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0.85rem;
+	border-radius: 0.25rem;
+	button {
+		background: transparent;
+		border: none;
+		cursor: pointer;
+	}
+	a {
+		color: var(--text-secondary);
+		text-decoration: none;
+		transition: ease color 0.3s;
+		text-transform: capitalize;
+		&:hover {
+			color: var(--text);
+		}
+	}
+}

@@ -1,25 +1,13 @@
-import styles from "./All.module.scss";
 import { useEffect, useState } from "react";
 import { Layout } from "../../components/Layout";
-import { Link } from "react-router-dom";
+import { BreedList } from "../../components/BreedList";
 
 export function AllView() {
 	const breeds = useFetchAllBreeds(); // customowy hook aby wszystko było w jednym miejscu;
 	// 2 hooki: useState i useEffect są potrzebne do osiągnięcia pożadanego efektu, więc stworzenie abstrakcji jest według mnie dobrym pomysłem
 	return (
 		<Layout>
-			<h2 className={styles.header}>Lista ras</h2>
-			{breeds.map((breed) => (
-				<div
-					className={styles.breed}
-					key={`${breed.main}-${breed.sub}`}
-				>
-					<Link to={`/breed/${breed.main}/${breed.sub}`}>
-						{breed.sub} {breed.main}
-					</Link>
-					<button onClick={() => alert("TODO")}>❤️</button>
-				</div>
-			))}
+			<BreedList header={"Lista Ras"} items={breeds} />
 		</Layout>
 	);
 }
