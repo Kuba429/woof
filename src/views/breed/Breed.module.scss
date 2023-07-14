@@ -1,0 +1,23 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	padding-inline: 4rem;
+}
+.image {
+	border-radius: 100%;
+	aspect-ratio: 1 / 1;
+	width: 50vmin;
+	object-fit: cover;
+	margin: auto;
+}
+.header {
+	text-transform: capitalize;
+	font-size: 1.5rem;
+	margin-block: 0.4rem;
+}
+p {
+	color: var(--text-secondary);
+	margin-block: 1rem;
+	font-size: 1.225rem;
+	line-height: 2rem;
+}
