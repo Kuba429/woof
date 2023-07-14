@@ -11,19 +11,25 @@ export function BreedView() {
 	const [, setImage] = useAtom(setImageAtom);
 	const breed = allBreeds.find(
 		(item) => item.main === params.main && item.sub === params.sub
-	)!; // TODO
-	const breedName = (breed.sub ?? "") + " " + breed.main;
+	);
 	useEffect(() => {
+		if (!breed || breed.image) return;
 		async function fetchImgUrl() {
+			if (!breed) return;
+			let path = breed.main;
+			if (breed.sub) {
+				path += "/" + breed.sub;
+			}
 			const res = await fetch(
-				`https://dog.ceo/api/breed/hound/images/random`
+				`https://dog.ceo/api/breed/${path}/images/random`
 			);
 			const url = (await res.json()).message;
 			setImage({ sub: breed.sub, main: breed.main, newImage: url });
 		}
-		if (breed && breed.image) return;
 		fetchImgUrl();
 	}, []);
+	if (!breed) return <h1>404</h1>; // TODO 404
+	const breedName = (breed.sub ?? "") + " " + breed.main;
 	return (
 		<Layout>
 			<div className={styles.container}>
