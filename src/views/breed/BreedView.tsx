@@ -1,5 +1,5 @@
 import styles from "./Breed.module.scss";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useAtom } from "jotai";
 import { allBreedsAtom, setImageAtom } from "../../stores/breeds";
@@ -27,7 +27,7 @@ export function BreedView() {
 		}
 		fetchImgUrl();
 	}, []);
-	if (!breed) return <h1>404</h1>; // TODO 404
+	if (!breed) return fallback;
 	const breedName = (breed.sub ?? "") + " " + breed.main;
 	return (
 		<div className={styles.container}>
@@ -64,6 +64,15 @@ export function BreedView() {
 	);
 }
 
+const fallback = (
+	<div className={styles.fallback}>
+		<h1>Ten pies nie istnieje</h1>
+		<p>
+			Wygląda na to, że znalazłeś się w miejscu które nie istnieje. Wróć
+			na <Link to="/">stronę główną</Link> i spróbuj jeszcze raz.
+		</p>
+	</div>
+);
 function GoBackButton() {
 	const navigate = useNavigate();
 	return (

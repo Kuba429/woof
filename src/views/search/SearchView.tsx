@@ -57,6 +57,7 @@ const listFallback = (
 );
 
 function applySearch(arr: breedType[], query: string) {
+	// ten system szukania sprawdza czy istnieje rasa w której występują wszystkie znaki wyszukiwanego słowa w odpowiedniej kolejności, nie muszą być przy sobie. W ten sposób jest większa tolerancja na błąd użytkownika i większa szansa, że znajdzie to, czego szuka
 	return arr.filter((item) => {
 		const fullName = `${item.sub} ${item.main}`.toLowerCase();
 		const q = query.toLowerCase().split("");
