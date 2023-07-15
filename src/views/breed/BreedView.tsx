@@ -32,11 +32,19 @@ export function BreedView() {
 	return (
 		<div className={styles.container}>
 			<GoBackButton />
-			<img
-				className={styles.image}
-				src={breed.image}
-				alt={breedName + " image"}
-			/>
+			{breed.image ? (
+				<img
+					className={styles.image}
+					src={breed.image}
+					alt={breedName + " image"}
+				/>
+			) : (
+				<img
+					className={styles.image + " " + styles.fallbackImage}
+					src="/dog-fallback.png"
+					alt="Fallback image"
+				/>
+			)}
 			<h2 className={styles.header}>{breedName}</h2>
 			<p>
 				Ten pies to wierny i przyjacielski czworonóg, który świetnie
