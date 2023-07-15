@@ -1,0 +1,30 @@
+.header {
+	text-align: center;
+	color: var(--text-secondary);
+	font-weight: 300;
+}
+.form {
+	width: full;
+	display: flex;
+	gap: 1rem;
+}
+.input {
+	flex-grow: 1;
+	padding: 1rem;
+	border-radius: 10px;
+	border: var(--text-primary) 1px solid;
+	background-color: transparent;
+	font-size: 1.1rem;
+	color: var(--text-primary);
+	&:focus {
+		outline-color: var(--primary);
+		border-color: var(--primary);
+	}
+}
+.button {
+	background: var(--primary);
+	border: none;
+	border-radius: 10px;
+	padding-inline: 2rem;
+	font-size: 1.1rem;
+}
