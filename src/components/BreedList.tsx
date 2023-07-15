@@ -11,7 +11,7 @@ export function BreedList({
 }) {
 	return (
 		<>
-			<h2 className={styles.header}>{header}</h2>
+			<h2>{header}</h2>
 			{items.map((breed) => (
 				<ListItem breed={breed} key={`${breed.main}-${breed.sub}`} />
 			))}
