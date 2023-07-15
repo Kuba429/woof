@@ -1,5 +1,4 @@
 import { useRoutes } from "react-router-dom";
-import { HomeView } from "./views/home/HomeView";
 import { SearchView } from "./views/search/SearchView";
 import { AllView } from "./views/all/AllView";
 import { BreedView } from "./views/breed/BreedView";
@@ -10,15 +9,11 @@ export function App() {
 	const element = useRoutes([
 		{
 			path: "/",
-			element: <HomeView />,
+			element: <AllView />,
 		},
 		{
 			path: "/search",
 			element: <SearchView />,
-		},
-		{
-			path: "/all",
-			element: <AllView />,
 		},
 		{
 			path: "/breed/:main/:sub",

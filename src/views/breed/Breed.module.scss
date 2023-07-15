@@ -21,3 +21,12 @@ p {
 	font-size: 1.225rem;
 	line-height: 2rem;
 }
+.backIcon {
+	border: none;
+	background: transparent;
+	fill: var(--text-primary);
+	height: 1rem;
+	width: 1rem;
+	justify-self: flex-start;
+	cursor: pointer;
+}

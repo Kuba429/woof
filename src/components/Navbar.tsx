@@ -5,10 +5,8 @@ import { ReactNode } from "react";
 export function Navbar() {
 	return (
 		<div className={styles.navbar}>
-			<NavItem to="/all">{allIcon}</NavItem>
 			<NavItem to="/liked">{likedIcon}</NavItem>
 			<NavItem to="/">{homeIcon}</NavItem>
-			<NavItem to="/random">{randomicon}</NavItem>
 			<NavItem to="/search">{searchIcon}</NavItem>
 		</div>
 	);
