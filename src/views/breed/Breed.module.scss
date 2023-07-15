@@ -9,6 +9,7 @@
 	width: 50vmin;
 	object-fit: cover;
 	margin: auto;
+	margin-bottom: 1rem;
 }
 .header {
 	text-transform: capitalize;
@@ -29,4 +30,10 @@ p {
 	width: 1rem;
 	justify-self: flex-start;
 	cursor: pointer;
+}
+
+@media (max-width: 500px) {
+	.container {
+		padding-inline: 1rem;
+	}
 }
