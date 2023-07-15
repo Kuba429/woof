@@ -18,7 +18,8 @@
 	object-fit: fill;
 	top: 0;
 	left: 0;
-	transform: translateY(-100%);
+	transform: translate(-50%, -100%);
+	transition: ease all 0.2s;
 	padding: 0;
 	margin: 0;
 	svg {
@@ -33,9 +34,10 @@
 	height: 1.5rem;
 	aspect-ratio: 1 / 1;
 	fill: var(--bg);
-	transition: fill ease 0.2s;
+	transition: all ease 0.2s;
 	position: relative;
 }
 .active {
 	fill: #0085c0;
+	transform: scale(1.7);
 }

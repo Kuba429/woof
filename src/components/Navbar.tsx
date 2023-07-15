@@ -1,21 +1,38 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import styles from "./Navbar.module.scss";
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useRef } from "react";
+import { atom, useAtom } from "jotai";
 
+const waveAtom = atom(window.innerWidth / 2);
 export function Navbar() {
+	const [waveX] = useAtom(waveAtom);
 	return (
 		<div className={styles.navbar}>
 			<NavItem to="/liked">{likedIcon}</NavItem>
 			<NavItem to="/">{homeIcon}</NavItem>
 			<NavItem to="/search">{searchIcon}</NavItem>
-			<div className={styles.wave}>{waveIcon}</div>
+			<div style={{ left: waveX }} className={styles.wave}>
+				{waveIcon}
+			</div>
 		</div>
 	);
 }
 
 function NavItem({ to, children }: { to: string; children: ReactNode }) {
+	const location = useLocation();
+	const ref = useRef<HTMLAnchorElement | null>(null);
+	const [, setWaveX] = useAtom(waveAtom);
+	useEffect(() => {
+		// jeśli ścieżka zmieniła się na tą, ustaw falę nad tą ikonką
+		if (location.pathname !== to) return;
+		const rect = ref.current?.getBoundingClientRect();
+		if (!rect) return;
+		const middle = rect.left + rect.width / 2;
+		setWaveX(middle);
+	}, [location, setWaveX]);
 	return (
 		<NavLink
+			ref={ref}
 			className={({ isActive }) =>
 				(isActive ? styles.active : "") + " " + styles.link
 			}
