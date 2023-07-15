@@ -48,7 +48,8 @@
 	transition: ease all 0.2s;
 	font-size: 1.1rem;
 }
-.input:focus + label {
+.input:focus + label,
+.input[data-is-empty="false"] + label {
 	background-color: var(--primary);
 	color: var(--bg);
 	top: 0;
@@ -67,4 +68,19 @@
 
 .fallback {
 	text-align: center;
+}
+@media (max-width: 500px) {
+	.input {
+		font-size: 0.9rem;
+	}
+	.input + label {
+		font-size: 0.9rem;
+	}
+	.input:focus + label {
+		font-size: 0.7rem;
+	}
+	.button {
+		font-size: 0.9rem;
+		padding-inline: 1rem;
+	}
 }

@@ -16,12 +16,20 @@ export function SearchView() {
 		if (typeof newQuery !== "string") return;
 		setQuery(newQuery);
 	};
+	const [isEmpty, setIsEmpty] = useState(true);
 	return (
 		<>
 			<h2 className={styles.header}>Szukaj a znajdziesz ;)</h2>
 			<form onSubmit={handleSubmit} className={styles.form}>
 				<div className={styles.inputWrapper}>
 					<input
+						data-is-empty={isEmpty}
+						onInput={(e) =>
+							setIsEmpty(
+								(e.target as HTMLInputElement).value.length ===
+									0
+							)
+						}
 						ref={inputRef}
 						id={inputId}
 						className={styles.input}
