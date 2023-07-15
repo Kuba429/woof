@@ -36,7 +36,10 @@
 	}
 }
 .inactive {
-	fill: #fff;
+	fill: var(--text-secondary);
+	&:hover {
+		fill: var(--text-primary);
+	}
 }
 .active {
 	fill: #fe7272;
