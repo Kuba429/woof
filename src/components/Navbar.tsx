@@ -8,6 +8,7 @@ export function Navbar() {
 			<NavItem to="/liked">{likedIcon}</NavItem>
 			<NavItem to="/">{homeIcon}</NavItem>
 			<NavItem to="/search">{searchIcon}</NavItem>
+			<div className={styles.wave}>{waveIcon}</div>
 		</div>
 	);
 }
@@ -24,7 +25,16 @@ function NavItem({ to, children }: { to: string; children: ReactNode }) {
 		</NavLink>
 	);
 }
-
+const waveIcon = (
+	<svg
+		preserveAspectRatio="none"
+		viewBox="0 0 1462 230"
+		xmlns="http://www.w3.org/2000/svg"
+	>
+		<path d="M294.5 113.121C473 -3.00008 731 0.5 731 0.5V229.981H0C0 229.981 116 229.242 294.5 113.121Z" />
+		<path d="M1167.5 113.121C989 -3 731 0.5 731 0.5V229.981L1462 229.981C1462 229.981 1346 229.242 1167.5 113.121Z" />
+	</svg>
+);
 const homeIcon = (
 	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
 		{
