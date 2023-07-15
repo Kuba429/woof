@@ -7,11 +7,11 @@ export function BreedList({
 	header,
 }: {
 	items: breedType[];
-	header: string;
+	header: string | undefined;
 }) {
 	return (
 		<>
-			<h2>{header}</h2>
+			{header && <h2>{header}</h2>}
 			{items.map((breed) => (
 				<ListItem breed={breed} key={`${breed.main}-${breed.sub}`} />
 			))}
