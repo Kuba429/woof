@@ -12,7 +12,7 @@ export function SearchView() {
 	const handleSubmit = (e: FormEvent) => {
 		e.preventDefault();
 		const newQuery = inputRef.current?.value;
-		if (!newQuery) return;
+		if (typeof newQuery !== "string") return;
 		setQuery(newQuery);
 	};
 	return (
