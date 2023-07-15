@@ -14,12 +14,12 @@
 .link {
 	color: white;
 	text-decoration: none;
-	height: 2rem;
+	height: 1.5rem;
 	aspect-ratio: 1 / 1;
-	fill: var(--text-secondary);
-	color: var(--text-secondary);
+	fill: var(--bg);
+	transition: fill ease 0.2s;
+	position: relative;
 }
 .active {
-	fill: var(--text-primary) !important;
-	color: var(--text-primary) !important;
+	fill: #0085c0;
 }
