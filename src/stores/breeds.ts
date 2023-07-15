@@ -32,7 +32,6 @@ export const allBreedsAtom = atom(await fetchAllBreeds());
 export const setImageAtom = atom(
 	null,
 	(get, set, update: { main: string; sub: string; newImage: string }) => {
-		console.log(update.newImage);
 		const copy = [...get(allBreedsAtom)];
 		const itemToUpdate = copy.find(
 			(item) => item.sub === update.sub && item.main === update.main
