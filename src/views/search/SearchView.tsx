@@ -3,6 +3,7 @@ import styles from "./Search.module.scss";
 import { useAtom } from "jotai";
 import { allBreedsAtom, breedType } from "../../stores/breeds";
 import { BreedList } from "../../components/BreedList";
+
 export function SearchView() {
 	const [allBreeds] = useAtom(allBreedsAtom);
 	const [query, setQuery] = useState("");
@@ -35,10 +36,17 @@ export function SearchView() {
 					Szukaj
 				</button>
 			</form>
-			<BreedList header={undefined} items={breedsToDisplay} />
+			<BreedList fallback={listFallback} items={breedsToDisplay} />
 		</>
 	);
 }
+
+const listFallback = (
+	<div className={styles.fallback}>
+		<h1>Ups</h1>
+		<p>Wygląda na to, że w naszej bazie nie ma rasy której szukasz :(</p>
+	</div>
+);
 
 function applySearch(arr: breedType[], query: string) {
 	return arr.filter((item) => {

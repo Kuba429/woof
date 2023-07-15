@@ -2,19 +2,28 @@ import { Link } from "react-router-dom";
 import styles from "./BreedList.module.scss";
 import { useAtom } from "jotai";
 import { breedType, toggleLikedAtom } from "../stores/breeds";
+import { ReactNode } from "react";
+
 export function BreedList({
 	items,
 	header,
+	fallback = <div></div>,
 }: {
 	items: breedType[];
-	header: string | undefined;
+	header?: string;
+	fallback?: ReactNode;
 }) {
 	return (
 		<>
 			{header && <h2>{header}</h2>}
-			{items.map((breed) => (
-				<ListItem breed={breed} key={`${breed.main}-${breed.sub}`} />
-			))}
+			{items.length
+				? items.map((breed) => (
+						<ListItem
+							breed={breed}
+							key={`${breed.main}-${breed.sub}`}
+						/>
+				  ))
+				: fallback}
 		</>
 	);
 }
