@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useAtom } from "jotai";
 import { allBreedsAtom, setImageAtom } from "../../stores/breeds";
+import { LikeIcon } from "../../components/LikeIcon";
 
 export function BreedView() {
 	const params = useParams();
@@ -12,6 +13,7 @@ export function BreedView() {
 		(item) => item.main === params.main && item.sub === params.sub
 	);
 	useEffect(() => {
+		// jeśli zdjęcie tej rasy nie zostało wcześniej zapisane, znajdź je i zapisz
 		if (!breed || breed.image) return;
 		async function fetchImgUrl() {
 			if (!breed) return;
@@ -31,7 +33,10 @@ export function BreedView() {
 	const breedName = (breed.sub ?? "") + " " + breed.main;
 	return (
 		<div className={styles.container}>
-			<GoBackButton />
+			<div className={styles.topIconsContainer}>
+				<GoBackButton />
+				<LikeIcon breed={breed} />
+			</div>
 			{breed.image ? (
 				<img
 					className={styles.image}
