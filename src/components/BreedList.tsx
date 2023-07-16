@@ -1,9 +1,8 @@
-import { Link } from "react-router-dom";
-import styles from "./BreedList.module.scss";
-import { useAtom } from "jotai";
-import { breedType, toggleLikedAtom } from "../stores/breeds";
-import { ReactNode } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { ReactNode } from "react";
+import { Link } from "react-router-dom";
+import { breedType } from "../stores/breeds";
+import styles from "./BreedList.module.scss";
 import { LikeIcon } from "./LikeIcon";
 
 export function BreedList({
@@ -34,7 +33,6 @@ export function BreedList({
 }
 
 function ListItem({ breed, index }: { breed: breedType; index?: number }) {
-	const [, toggleLiked] = useAtom(toggleLikedAtom);
 	return (
 		<motion.div
 			layout
@@ -54,10 +52,7 @@ function ListItem({ breed, index }: { breed: breedType; index?: number }) {
 			<Link to={`/breed/${breed.main}/${breed.sub}`}>
 				{breed.sub} {breed.main}
 			</Link>
-			<LikeIcon
-				clickCallback={() => toggleLiked(breed)}
-				active={breed.isLiked}
-			/>
+			<LikeIcon breed={breed} />
 		</motion.div>
 	);
 }
