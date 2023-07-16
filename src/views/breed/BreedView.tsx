@@ -15,7 +15,7 @@ export function BreedView() {
 	useEffect(() => {
 		// jeśli zdjęcie tej rasy nie zostało wcześniej zapisane, znajdź je i zapisz
 		if (!breed || breed.image) return;
-		async function fetchImgUrl() {
+		async function fetchImgUrl(): Promise<void> {
 			if (!breed) return;
 			let path = breed.main;
 			if (breed.sub) {
@@ -27,8 +27,8 @@ export function BreedView() {
 			const url = (await res.json()).message;
 			setImage({ sub: breed.sub, main: breed.main, newImage: url });
 		}
-		fetchImgUrl();
-	}, []);
+		void fetchImgUrl();
+	}, [breed, setImage]);
 	if (!breed) return fallback;
 	const breedName = (breed.sub ?? "") + " " + breed.main;
 	return (
@@ -73,7 +73,7 @@ const fallback = (
 	<div className={styles.fallback}>
 		<h1>Ten pies nie istnieje</h1>
 		<p>
-			Wygląda na to, że znalazłeś się w miejscu które nie istnieje. Wróć
+			Wygląda na to, że znalazłeś się w miejscu które nie istnieje. Wróć
 			na <Link to="/">stronę główną</Link> i spróbuj jeszcze raz.
 		</p>
 	</div>

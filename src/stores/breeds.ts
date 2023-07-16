@@ -26,7 +26,7 @@ async function fetchAllBreeds() {
 function getLikedBreeds(): [string, string][] {
 	const likedJson = localStorage.getItem(LOCAL_STORAGE_LIKED_KEY);
 	if (!likedJson) return [];
-	return JSON.parse(likedJson);
+	return JSON.parse(likedJson) as [string, string][];
 }
 export const allBreedsAtom = atom(await fetchAllBreeds());
 export const setImageAtom = atom(

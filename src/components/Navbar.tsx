@@ -29,7 +29,7 @@ function NavItem({ to, children }: { to: string; children: ReactNode }) {
 		if (!rect) return;
 		const middle = rect.left + rect.width / 2;
 		setWaveX(middle);
-	}, [location, setWaveX]);
+	}, [location, setWaveX, to]);
 	return (
 		<NavLink
 			ref={ref}
