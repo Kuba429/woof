@@ -1,0 +1,24 @@
+.like {
+	position: relative;
+	transition: ease-out 0.1s all;
+	cursor: pointer;
+	svg {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		transition: ease-out 0.2s all;
+	}
+	&:active {
+		transform: scale(1.3);
+	}
+}
+.inactive {
+	fill: var(--text-secondary);
+	&:hover {
+		fill: var(--text-primary);
+	}
+}
+.active {
+	fill: #fe7272;
+}
