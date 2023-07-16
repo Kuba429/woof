@@ -5,9 +5,9 @@ const LOCAL_STORAGE_LIKED_KEY = "liked-breeds";
 export type breedType = Awaited<ReturnType<typeof fetchAllBreeds>>[number];
 
 async function fetchAllBreeds() {
-	// const res = await fetch("https://dog.ceo/api/breeds/list/all");
 	const liked = getLikedBreeds();
-	const res = await fetch("/backup.json");
+	const res = await fetch("https://dog.ceo/api/breeds/list/all");
+	//const res = await fetch("/backup.json");
 	type rawBreedsType = { [breed: string]: string[] };
 	const rawBreeds = (await res.json()).message as rawBreedsType;
 	// konwertowanie ras do odpowiedniej formy
