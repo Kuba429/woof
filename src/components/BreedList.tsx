@@ -3,6 +3,7 @@ import styles from "./BreedList.module.scss";
 import { useAtom } from "jotai";
 import { breedType, toggleLikedAtom } from "../stores/breeds";
 import { ReactNode } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
 export function BreedList({
 	items,
@@ -16,29 +17,46 @@ export function BreedList({
 	return (
 		<>
 			{header && <h2>{header}</h2>}
-			{items.length
-				? items.map((breed) => (
-						<ListItem
-							breed={breed}
-							key={`${breed.main}-${breed.sub}`}
-						/>
-				  ))
-				: fallback}
+			<AnimatePresence>
+				{items.length
+					? items.map((breed, idx) => (
+							<ListItem
+								breed={breed}
+								key={`${breed.main}-${breed.sub}`}
+								index={idx}
+							/>
+					  ))
+					: fallback}
+			</AnimatePresence>
 		</>
 	);
 }
 
-function ListItem({ breed }: { breed: breedType }) {
+function ListItem({ breed, index }: { breed: breedType; index?: number }) {
 	const [, toggleLiked] = useAtom(toggleLikedAtom);
 	return (
-		<div className={styles.breed}>
+		<motion.div
+			layout
+			initial={{ x: -500, opacity: 0 }}
+			animate={{
+				x: 0,
+				opacity: 1,
+				transition: { delay: 0.01 * (index ?? 0) },
+			}}
+			exit={{
+				x: -500,
+				opacity: 0,
+				transition: { duration: 0.1 },
+			}}
+			className={styles.breed}
+		>
 			<Link to={`/breed/${breed.main}/${breed.sub}`}>
 				{breed.sub} {breed.main}
 			</Link>
 			<div className={styles.like} onClick={() => toggleLiked(breed)}>
 				<LikeIcon active={breed.isLiked} />
 			</div>
-		</div>
+		</motion.div>
 	);
 }
 
