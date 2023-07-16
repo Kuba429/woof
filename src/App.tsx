@@ -5,6 +5,9 @@ import { BreedView } from "./views/breed/BreedView";
 import { LikedView } from "./views/liked/LikedView";
 import { Layout } from "./components/Layout";
 import { AnimatePresence, motion } from "framer-motion";
+import { useEffect } from "react";
+import { useAtom } from "jotai";
+import { allBreedsAtom, fetchAllBreeds } from "./stores/breeds";
 
 export function App() {
 	const element = useRoutes([
@@ -30,6 +33,13 @@ export function App() {
 		},
 	]);
 	const location = useLocation();
+	const [, setAllBreeds] = useAtom(allBreedsAtom);
+	useEffect(() => {
+		async function updateAllBreeds() {
+			setAllBreeds(await fetchAllBreeds());
+		}
+		void updateAllBreeds();
+	}, [setAllBreeds]);
 	return (
 		<Layout>
 			<AnimatePresence mode="wait">

@@ -4,7 +4,7 @@ const LOCAL_STORAGE_LIKED_KEY = "liked-breeds";
 
 export type breedType = Awaited<ReturnType<typeof fetchAllBreeds>>[number];
 
-async function fetchAllBreeds() {
+export async function fetchAllBreeds() {
 	const liked = getLikedBreeds();
 	const res = await fetch("https://dog.ceo/api/breeds/list/all");
 	//const res = await fetch("/backup.json");
@@ -28,7 +28,7 @@ function getLikedBreeds(): [string, string][] {
 	if (!likedJson) return [];
 	return JSON.parse(likedJson) as [string, string][];
 }
-export const allBreedsAtom = atom(await fetchAllBreeds());
+export const allBreedsAtom = atom([] as breedType[]);
 export const setImageAtom = atom(
 	null,
 	(get, set, update: { main: string; sub: string; newImage: string }) => {
